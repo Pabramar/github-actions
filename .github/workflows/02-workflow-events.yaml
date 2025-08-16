@@ -1,6 +1,11 @@
 name: 02 - Workflow Events
 on:
   push:
+  pull_request:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
 
 jobs:
   echo:
@@ -9,14 +14,3 @@ jobs:
       - name: Show the trigger
         run: |
             echo "Event name: ${{github.event_name}}"
-    
-  echo-goodbye:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Failed step
-        run: |
-            echo "I will not fail"
-            exit 0
-      - name: Say goodbye
-        run: |
-            echo "Goodbye"
