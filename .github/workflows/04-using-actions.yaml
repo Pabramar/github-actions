@@ -8,5 +8,11 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v5
-      - name: Printing Folders
-        run: ls -R
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - name: Install Dependencies
+        run: |
+            cd 04-using-actions/react-app
+            npm ci
