@@ -7,14 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        run: github/checkout@v2
+        uses: actions/checkout@v5
       - name: Printing Folders
         run: ls -R
-  mac:
-    name: mac-echo
-    runs-on: macos-latest
-    steps:
-      - name: Show OS
-        run: |
-          echo "This job is running on a MacOS runner."
-          echo "${{ runner.os }}"
