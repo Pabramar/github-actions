@@ -1,8 +1,14 @@
 name: 06 - Contexts
-run-name: "My custom workflow run name - ${{ github.actor }}"
+run-name: "06 - Contexts | DEBUG - ${{ inputs.debug }}"
 on:
   push:
   workflow_dispatch:
+    inputs:
+      debug:
+        description: "Enable debug mode"
+        type: "boolean"
+        required: false
+        default: false
 
 jobs:
   echo-data :
