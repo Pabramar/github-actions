@@ -26,6 +26,9 @@ jobs:
           cat << EOF
           ${{ toJson(github.event.pull_request.labels) }}
           EOF
+          if ${{ 'salmon'=='salmon' }}; then
+            exit 1
+          fi
       - name: 'Bug step'
         if: ${{ failure() && !cancelled() && contains(github.event.pull_request.title, 'fix') }}
         run: echo "I am a bug fix"
