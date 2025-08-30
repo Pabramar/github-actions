@@ -4,8 +4,7 @@ run-name: "09 - Using Functions"
 on:
   pull_request:
     branches:
-      - main
-      - pr-test-1
+      - salmon
   workflow_dispatch:
     inputs:
       debug:
