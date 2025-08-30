@@ -1,5 +1,5 @@
 name: 08 - Using Variables
-run-name: "08 - Using Variables | DEBUG - ${{ inputs.debug && 'ON' || 'OFF' }}"
+run-name: "08 - Using Variables"
 
 env:
     WORKFLOW_VAR: 'I am a workflow env var'
@@ -17,17 +17,16 @@ jobs:
   echo:
     runs-on: ubuntu-latest
     env:
-        WORKFLOW_VAR: 'I am a job env var'
-        OVERWRITTEN: 'I have been overwritten at the job level'
+        JOB_VAR: 'I am a job env var'
     steps:
       - name: 'Print Env Variables'
         env:
-          WORKFLOW_VAR: 'I am a step env var'
-          OVERWRITTEN: 'I am another step var'
+          STEP_VAR: 'I am a step env var'
+          step_var2: 'I am another step var'
         run: |
-          echo "Step env var: ${{ env.WORKFLOW_VAR }}"
-          echo "Step env var 2: ${{ env.OVERWRITTEN }}"
-          echo "Job env var: ${{ env.WORKFLOW_VAR }}"
+          echo "Step env var: ${{ env.STEP_VAR }}"
+          echo "Step env var 2: ${{ env.step_var2 }}"
+          echo "Job env var: ${{ env.JOB_VAR }}"
           echo "Workflow env var: ${{ env.WORKFLOW_VAR }}"
           echo "Overwritten: ${{ env.OVERWRITTEN }}"
       - name: 'Overwrite Job Variable'
