@@ -38,4 +38,4 @@ jobs:
     environment: ${{ inputs.target }}
     steps:
       - name: 'Deploy'
-        run: echo "Deploying to ${{ inputs.target }}"
+        run: echo "Deploying to ${{ inputs.target }} with version ${{ inputs.tag }}"
