@@ -3,17 +3,17 @@ run-name: "15 - Working with Matrices"
 
 on:
   workflow_dispatch:
-    inputs:
-      name:
-        description: "Name of the app"
-        type: string
-        required: false
-        default: "duolingo"
-      path:
-        description: "Path to the app"
-        type: string
-        required: false
-        default: "14-artifacts/react-app/build"
+    # inputs:
+    #   name:
+    #     description: "Name of the app"
+    #     type: string
+    #     required: false
+    #     default: "duolingo"
+    #   path:
+    #     description: "Path to the app"
+    #     type: string
+    #     required: false
+    #     default: "14-artifacts/react-app/build"
 
 jobs:
   backwards-compatibility:
