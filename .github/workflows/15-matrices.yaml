@@ -41,7 +41,7 @@ jobs:
             echo "Uploading test results"
 
   include-example:
-    name: "Color: ${{ matrix.color }}, Shape: ${{ matrix.shape }}, Size: ${{ matrix.size }}"
+    name: "Color: ${{ matrix.color }}, Shape: ${{ matrix.shape }}, Size: ${{ matrix.size }} ${{ matrix.opacity && format('with opacity {0}', matrix.opacity) || '' }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -51,7 +51,9 @@ jobs:
         include:
           - color: blue
             shape: triangle
+
+          - opacity: 50
     steps:
       - name: Dummy step
         run: |
-          echo "Color: ${{ matrix.color }}, Shape: ${{ matrix.shape }}, Size: ${{ matrix.size }}"        
+          echo "Color: ${{ matrix.color }}, Shape: ${{ matrix.shape }}, Size: ${{ matrix.size }} ${{ matrix.opacity && format('with opacity {0}', matrix.opacity) || '' }}"        
