@@ -3,32 +3,40 @@ run-name: "15 - Working with Matrices"
 
 on:
   workflow_dispatch:
-    # inputs:
-    #   name:
-    #     description: "Name of the app"
-    #     type: string
-    #     required: false
-    #     default: "duolingo"
-    #   path:
-    #     description: "Path to the app"
-    #     type: string
-    #     required: false
-    #     default: "14-artifacts/react-app/build"
 
 jobs:
   backwards-compatibility:
-    name: ${{ matrix.os }} - Node ${{ matrix.node-version }}
+    name: ${{ matrix.os }} - Node ${{ matrix.node-version }}${{ matrix.tag && format(' - {0}', matrix.tag) || '' }}
     strategy:
+      fail-fast: false
       matrix:
         node-version: [18.x, 20.x, 21.x]
         os: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          # Extra combination: Node 16.x on ubuntu-latest
+          - os: ubuntu-latest
+            node-version: 16.x
+
+          # Extra tag for Node 21.x on ubuntu-latest
+          - os: ubuntu-latest
+            node-version: 21.x
+            tag: experimental
     runs-on: ${{ matrix.os }}
     steps:
         - name: Setup Node
           uses: actions/setup-node@v2
           with:
             node-version: ${{ matrix.node-version }}
+        - name: Fail if experimental
+          if: ${{ matrix.tag == 'experimental' }}
+          run: exit 1
+
         - name: Perform some tests
           run: |
             echo "Running tests on OS ${{ matrix.os }} and NodeJS ${{ matrix.node-version }}"
+            sleep 10
+
+        - name: Upload test results
+          run: |
+            echo "Uploading test results"
 
