@@ -8,7 +8,7 @@ on:
         description: "Name of the app"
         type: string
         required: false
-        default: "app"
+        default: "duolingo"
       path:
         description: "Path to the app"
         type: string
