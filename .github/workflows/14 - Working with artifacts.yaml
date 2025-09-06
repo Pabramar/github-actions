@@ -1,5 +1,5 @@
 name: 14 - Working with Artifacts
-run-name: "14 - Working with Artifacts | CACHING - ${{ inputs.use-cache && 'ON' || 'OFF' }}"
+run-name: "14 - Working with Artifacts"
 
 on:
   workflow_dispatch:
@@ -21,7 +21,7 @@ jobs:
     needs: install-deps
     defaults:
       run:
-        working-directory: 14-artifacts/react-ap
+        working-directory: 14-artifacts/react-app
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
